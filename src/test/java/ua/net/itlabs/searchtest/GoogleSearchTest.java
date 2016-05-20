@@ -32,8 +32,7 @@ public class GoogleSearchTest {
     public void testSearchAndFollowLink() {
         driver.get("http://google.com/ncr");
 
-        driver.findElement(By.name("q")).clear();
-        driver.findElement(By.name("q")).sendKeys("Selenium automates browsers" + Keys.ENTER);
+        search("Selenium automates browsers");
 
         wait.until(sizeOf(By.cssSelector(searchResults), 10));
         wait.until(textToBePresentInElementLocated(By.cssSelector(searchResults + ":first-child"), "Selenium automates browsers"));
@@ -46,11 +45,9 @@ public class GoogleSearchTest {
     public void testFollowResultLink() {
         driver.get("http://google.com/ncr");
 
-        driver.findElement(By.name("q")).clear();
-        driver.findElement(By.name("q")).sendKeys("Selenium automates browsers" + Keys.ENTER);
+        search("Selenium automates browsers");
 
         followNthLink(0);
-
         wait.until(urlContains("http://www.seleniumhq.org/"));
     }
 
@@ -59,6 +56,11 @@ public class GoogleSearchTest {
     public void followNthLink(int index) {
         wait.until(minimumSizeOf(By.cssSelector(searchResults), index+1));
         driver.findElements(By.cssSelector(searchResults)).get(index).findElement(By.cssSelector(".r>a")).click();
+    }
+
+    public void search(String queryText) {
+        driver.findElement(By.name("q")).clear();
+        driver.findElement(By.name("q")).sendKeys(queryText + Keys.ENTER);
     }
 
 }
