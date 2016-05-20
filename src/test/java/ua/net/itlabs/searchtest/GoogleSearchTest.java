@@ -6,14 +6,12 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+import static ua.net.itlabs.searchtest.CustomConditions.minimumSizeOf;
+import static ua.net.itlabs.searchtest.CustomConditions.sizeOf;
 
 public class GoogleSearchTest {
     static WebDriver driver;
@@ -31,51 +29,42 @@ public class GoogleSearchTest {
     @Test
     public void testSearchAndFollowLink() {
         driver.get("http://google.com/ncr");
+
         driver.findElement(By.name("q")).clear();
         driver.findElement(By.name("q")).sendKeys("Selenium automates browsers" + Keys.ENTER);
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(sizeOf(By.cssSelector(".srg>.g"), 10));
-        wait.until(textToBePresentInElementLocated(By.cssSelector(".srg>.g:first-child"), "Selenium automates browsers"));
+
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+
+        wait.until(sizeOf(By.cssSelector(searchResults), 10));
+        wait.until(textToBePresentInElementLocated(By.cssSelector(searchResults + ":first-child"), "Selenium automates browsers"));
 
         followNthLink(0);
         wait.until(textToBePresentInElementLocated(By.cssSelector("#header>h1>a"), "Browser Automation"));
-        assertEquals("http://www.seleniumhq.org/", driver.getCurrentUrl());
+        wait.until(urlContains("http://www.seleniumhq.org/"));
     }
 
-    public static ExpectedCondition<Boolean> textToBePresentInElementLocated(final By elementsLocator, final String text) {
-        return new ExpectedCondition<Boolean>() {
-            private WebElement element;
+    @Test
+    public void testFollowResultLink() {
+        driver.get("http://google.com/ncr");
 
-            public Boolean apply(WebDriver driver) {
-                element = driver.findElement(elementsLocator);
-                return element.getText().contains(text);
-            }
+        driver.findElement(By.name("q")).clear();
+        driver.findElement(By.name("q")).sendKeys("Selenium automates browsers" + Keys.ENTER);
 
-            public String toString() {
-                return String.format("\nelement: %s\n doesn't contain: %s\n", element, text);
-            }
-        };
+        followNthLink(0);
+
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+
+        wait.until(textToBePresentInElementLocated(By.cssSelector("#header>h1>a"), "Browser Automation"));
+        wait.until(urlContains("http://www.seleniumhq.org/"));
     }
 
-    public static ExpectedCondition<Boolean> sizeOf(final By elementsLocator, final int expectedSize){
-        return new ExpectedCondition<Boolean>() {
-            private int listSize;
-            private List<WebElement> elements;
-
-            public Boolean apply(WebDriver driver) {
-                elements = driver.findElements(elementsLocator);
-                listSize = elements.size();
-                return listSize == expectedSize;
-            }
-
-            public String toString() {
-                return String.format("\nsize of list: %s\n to be: %s\n while actual size is: %s\n", elements, expectedSize, listSize);
-            }
-        };
-    }
+    public String searchResults = ".srg>.g";
 
     public void followNthLink(int index) {
-        driver.findElements(By.cssSelector(".srg>.g")).get(index).findElement(By.cssSelector(".r>a")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+
+        wait.until(minimumSizeOf(By.cssSelector(searchResults), index+1));
+        driver.findElements(By.cssSelector(searchResults)).get(index).findElement(By.cssSelector(".r>a")).click();
     }
 
 }
