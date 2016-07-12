@@ -20,7 +20,7 @@ public class GoogleSearchTest {
     @BeforeClass
     public static void setup() {
         driver = new FirefoxDriver();
-        wait = new WebDriverWait(driver, 300);
+        wait = new WebDriverWait(driver, 120);
     }
 
     @AfterClass
