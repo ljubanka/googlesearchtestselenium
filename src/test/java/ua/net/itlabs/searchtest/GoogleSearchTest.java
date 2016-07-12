@@ -20,7 +20,7 @@ public class GoogleSearchTest {
     @BeforeClass
     public static void setup() {
         driver = new FirefoxDriver();
-        wait = new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, 300);
     }
 
     @AfterClass
@@ -45,7 +45,6 @@ public class GoogleSearchTest {
     public void testFollowResultLink() {
         driver.get("http://google.com/ncr");
 
-        search("Selenium automates browsers");
 
         followNthLink(0);
         wait.until(urlContains("http://www.seleniumhq.org/"));
