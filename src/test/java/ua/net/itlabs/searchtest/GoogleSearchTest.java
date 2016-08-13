@@ -45,6 +45,7 @@ public class GoogleSearchTest {
     public void testFollowResultLink() {
         driver.get("http://google.com/ncr");
 
+        search("Selenium automates browsers");
 
         followNthLink(0);
         wait.until(urlContains("http://www.seleniumhq.org/"));
