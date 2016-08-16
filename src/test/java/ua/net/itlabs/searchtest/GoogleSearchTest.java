@@ -10,8 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
-import static ua.net.itlabs.searchtest.CustomConditions.minimumSizeOf;
-import static ua.net.itlabs.searchtest.CustomConditions.sizeOf;
+import static ua.net.itlabs.gmailtest.core.CustomConditions.minimumSizeOf;
+import static ua.net.itlabs.gmailtest.core.CustomConditions.sizeOf;
 
 public class GoogleSearchTest {
     static WebDriver driver;

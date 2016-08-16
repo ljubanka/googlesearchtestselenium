@@ -1,4 +1,4 @@
-package ua.net.itlabs.gmailtest;
+package ua.net.itlabs.gmailtest.core;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.By;
@@ -6,9 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllElementsLocatedBy;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public abstract class ConciseAPI {
@@ -27,16 +24,18 @@ public abstract class ConciseAPI {
         return $(By.cssSelector(cssSelector));
     }
 
-    public List<WebElement> $$(By locator) {
-        return assertThat(visibilityOfAllElementsLocatedBy(locator));
+    public By byText(String elementText) {
+        return By.xpath("//*[text()='" + elementText + "']");
     }
 
-    public List<WebElement> $$(String cssSelector) {
-        return $$(By.cssSelector(cssSelector));
-    }
+//        super(".//*/text()[normalize-space(.) = " + Quotes.escape(elementText) + "]/parent::*");
 
     public <V> V assertThat(Function<? super WebDriver, V> condition) {
-        return (new WebDriverWait(getWebDriver(), 8)).until(condition);
+        return (new WebDriverWait(getWebDriver(), Configuration.timeout)).until(condition);
+    }
+
+    public <V> V assertThat(Function<? super WebDriver, V> condition, int timeout) {
+        return (new WebDriverWait(getWebDriver(), timeout)).until(condition);
     }
 
 }

@@ -1,8 +1,8 @@
-package ua.net.itlabs.gmailtest.pages;
+package ua.net.itlabs.gmailtest.core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import ua.net.itlabs.gmailtest.ConciseAPI;
+
 
 public class BasePage extends ConciseAPI {
 

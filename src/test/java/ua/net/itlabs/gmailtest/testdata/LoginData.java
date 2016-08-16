@@ -1,4 +1,4 @@
-package ua.net.itlabs.testdata;
+package ua.net.itlabs.gmailtest.testdata;
 
 
 public class LoginData {
