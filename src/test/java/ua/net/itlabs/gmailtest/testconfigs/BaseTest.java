@@ -4,9 +4,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ua.net.itlabs.gmailtest.core.ConciseAPI;
-import ua.net.itlabs.gmailtest.core.Configuration;
+import ua.net.itlabs.gmailtest.core.Configuration1;
 
 public class BaseTest extends ConciseAPI {
     static WebDriver driver;
@@ -14,6 +13,7 @@ public class BaseTest extends ConciseAPI {
     @BeforeClass
     public static void setup() {
         driver = new FirefoxDriver();
+        Configuration1.timeout = 16;
     }
 
     @AfterClass

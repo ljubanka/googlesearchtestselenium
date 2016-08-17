@@ -22,16 +22,17 @@ public class Mails extends BasePage {
     }
 
     public  void assertMail(int index, String text) {
-        assertThat(listNthElementHasText(By.cssSelector(emails), index, text));
+        assertThat(listNthElementHasText(emails, index, text));
     }
 
     public void assertMails(String... emailTexts) {
-        assertThat(texts(By.cssSelector(emails), emailTexts));
+        assertThat(texts(emails, emailTexts));
     }
 
     public void searchBySubject(String text) {
         $(By.name("q")).sendKeys("subject: " + text + Keys.ENTER);
     }
 
-    public String emails = "[role='main'] .zA";
+    //public String emails = "[role='main'] .zA";
+    public By emails = By.cssSelector("[role='main'] .zA");
 }

@@ -13,39 +13,6 @@ import java.util.List;
 import static ua.net.itlabs.gmailtest.core.Helpers.getTexts;
 
 public class CustomConditions {
-    public static ExpectedCondition<Boolean> sizeOf(final By elementsLocator, final int expectedSize){
-        return new ExpectedCondition<Boolean>() {
-            private int listSize;
-            private List<WebElement> elements;
-
-            public Boolean apply(WebDriver driver) {
-                elements = driver.findElements(elementsLocator);
-                listSize = elements.size();
-                return listSize == expectedSize;
-            }
-
-            public String toString() {
-                return String.format("\nsize of list located by: %s\n to be: %s\n while actual size is: %s\n", elementsLocator, expectedSize, listSize);
-            }
-        };
-    }
-
-    public static ExpectedCondition<Boolean> minimumSizeOf(final By elementsLocator, final int expectedSize){
-        return new ExpectedCondition<Boolean>() {
-            private int listSize;
-            private List<WebElement> elements;
-
-            public Boolean apply(WebDriver driver) {
-                elements = driver.findElements(elementsLocator);
-                listSize = elements.size();
-                return listSize >= expectedSize;
-            }
-
-            public String toString() {
-                return String.format("\nminimum size of list located by: %s\n to be: %s\n while actual size is: %s\n", elementsLocator, expectedSize, listSize);
-            }
-        };
-    }
 
     public static ExpectedCondition<List<WebElement>> texts(final By elementsLocator, final String... expectedTexts) {
         return new ExpectedCondition<List<WebElement>>() {

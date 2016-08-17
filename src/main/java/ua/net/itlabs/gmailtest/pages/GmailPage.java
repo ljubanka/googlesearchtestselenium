@@ -3,9 +3,13 @@ package ua.net.itlabs.gmailtest.pages;
 import org.openqa.selenium.WebDriver;
 import ua.net.itlabs.gmailtest.core.BasePage;
 
-public class Gmail extends BasePage {
-    public Gmail(WebDriver driver) {
+public class GmailPage extends BasePage {
+    public GmailPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void vizit(String url) {
+        open(url);
     }
 
     public void logIn(String email, String pass) {
