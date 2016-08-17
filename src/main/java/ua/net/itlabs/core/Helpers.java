@@ -1,4 +1,4 @@
-package ua.net.itlabs.gmailtest.core;
+package ua.net.itlabs.core;
 
 import org.openqa.selenium.WebElement;
 

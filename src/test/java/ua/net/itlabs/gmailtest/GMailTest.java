@@ -6,7 +6,7 @@ import ua.net.itlabs.gmailtest.pages.MailsPage;
 import ua.net.itlabs.gmailtest.pages.MenuPage;
 import ua.net.itlabs.gmailtest.testconfigs.BaseTest;
 
-import static ua.net.itlabs.gmailtest.core.Helpers.getUniqueText;
+import static ua.net.itlabs.core.Helpers.getUniqueText;
 import static ua.net.itlabs.gmailtest.testdata.LoginData.email;
 import static ua.net.itlabs.gmailtest.testdata.LoginData.password;
 

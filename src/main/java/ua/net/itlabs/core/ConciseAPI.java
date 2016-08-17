@@ -1,4 +1,4 @@
-package ua.net.itlabs.gmailtest.core;
+package ua.net.itlabs.core;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.By;

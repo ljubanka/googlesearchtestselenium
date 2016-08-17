@@ -4,8 +4,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ua.net.itlabs.gmailtest.core.ConciseAPI;
-import ua.net.itlabs.gmailtest.core.Configuration;
+import ua.net.itlabs.core.ConciseAPI;
+import ua.net.itlabs.core.Configuration;
 
 public class BaseTest extends ConciseAPI {
     static WebDriver driver;

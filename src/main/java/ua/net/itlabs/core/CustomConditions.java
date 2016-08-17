@@ -1,4 +1,4 @@
-package ua.net.itlabs.gmailtest.core;
+package ua.net.itlabs.core;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.*;
@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.join;
-import static ua.net.itlabs.gmailtest.core.Helpers.getTexts;
 
 public class CustomConditions {
 
@@ -51,7 +50,7 @@ public class CustomConditions {
 
             public List<WebElement> apply(WebDriver webDriver) {
                 elements = webDriver.findElements(elementsLocator);
-                texts = getTexts(elements);
+                texts = Helpers.getTexts(elements);
                 if (texts.size() != expectedTexts.length) {
                     return null;
                 }
@@ -76,7 +75,7 @@ public class CustomConditions {
 
             public WebElement apply(WebDriver driver) {
                 elements = driver.findElements(elementsLocator);
-                texts = getTexts(elements);
+                texts = Helpers.getTexts(elements);
                 try {
                     if (texts.get(index).contains(expectedText)) {
                         return elements.get(index);
