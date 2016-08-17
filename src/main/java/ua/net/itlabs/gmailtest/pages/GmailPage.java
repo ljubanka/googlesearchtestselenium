@@ -8,8 +8,8 @@ public class GmailPage extends BasePage {
         super(driver);
     }
 
-    public void vizit(String url) {
-        open(url);
+    public void vizit() {
+        open("http://gmail.com");
     }
 
     public void logIn(String email, String pass) {
