@@ -17,7 +17,7 @@ public class GMailTest extends BaseTest {
 
     @Test
     public void testSendAndSearchEmail()  {
-        gmail.vizit("http://gmail.com");
+        gmail.vizit();
 
         gmail.logIn(email, password);
         String subject  = getUniqueText("Autotest email ");
