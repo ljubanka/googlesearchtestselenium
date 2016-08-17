@@ -3,7 +3,6 @@ package ua.net.itlabs.gmailtest.core;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class BasePage extends ConciseAPI {
 
     @Override

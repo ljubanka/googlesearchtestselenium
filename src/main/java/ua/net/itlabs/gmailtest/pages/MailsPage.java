@@ -1,6 +1,5 @@
 package ua.net.itlabs.gmailtest.pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +8,8 @@ import ua.net.itlabs.gmailtest.core.BasePage;
 import static ua.net.itlabs.gmailtest.core.CustomConditions.listNthElementHasText;
 import static ua.net.itlabs.gmailtest.core.CustomConditions.texts;
 
-public class Mails extends BasePage {
-    public Mails(WebDriver driver) {
+public class MailsPage extends BasePage {
+    public MailsPage(WebDriver driver) {
         super(driver);
     }
 
@@ -33,6 +32,5 @@ public class Mails extends BasePage {
         $(By.name("q")).sendKeys("subject: " + text + Keys.ENTER);
     }
 
-    //public String emails = "[role='main'] .zA";
     public By emails = By.cssSelector("[role='main'] .zA");
 }

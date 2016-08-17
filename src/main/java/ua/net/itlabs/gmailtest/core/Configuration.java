@@ -1,5 +1,5 @@
 package ua.net.itlabs.gmailtest.core;
 
-public class Configuration1 {
+public class Configuration {
     public static int timeout = 4;
 }

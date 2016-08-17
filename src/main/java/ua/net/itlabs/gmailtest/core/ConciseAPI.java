@@ -31,7 +31,7 @@ public abstract class ConciseAPI {
 //        super(".//*/text()[normalize-space(.) = " + Quotes.escape(elementText) + "]/parent::*");
 
     public <V> V assertThat(Function<? super WebDriver, V> condition) {
-        return assertThat(condition, Configuration1.timeout);
+        return assertThat(condition, Configuration.timeout);
     }
 
     public <V> V assertThat(Function<? super WebDriver, V> condition, int timeout) {

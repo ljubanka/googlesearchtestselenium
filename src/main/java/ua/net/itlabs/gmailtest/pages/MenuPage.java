@@ -3,9 +3,9 @@ package ua.net.itlabs.gmailtest.pages;
 import org.openqa.selenium.WebDriver;
 import ua.net.itlabs.gmailtest.core.BasePage;
 
-public class Menu extends BasePage {
+public class MenuPage extends BasePage {
 
-    public Menu(WebDriver driver) {
+    public MenuPage(WebDriver driver) {
         super(driver);
     }
     public void refresh() {
