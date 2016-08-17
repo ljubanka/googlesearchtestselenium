@@ -43,13 +43,11 @@ public class CustomConditions {
             });
         }
 
-        public static ExpectedCondition<List<WebElement>> texts(final By elementsLocator, final String... expectedTexts) {
+        public static ExpectedCondition<List<WebElement>> texts(final List<WebElement> elements, final String... expectedTexts) {
         return elementExceptionsCatcher(new ExpectedCondition<List<WebElement>>() {
-            private List<WebElement> elements;
             private List<String> texts;
 
             public List<WebElement> apply(WebDriver webDriver) {
-                elements = webDriver.findElements(elementsLocator);
                 texts = Helpers.getTexts(elements);
                 if (texts.size() != expectedTexts.length) {
                     return null;
@@ -68,13 +66,11 @@ public class CustomConditions {
         });
     }
 
-    public static ExpectedCondition<WebElement> listNthElementHasText(final By elementsLocator, final int index, final String expectedText) {
+    public static ExpectedCondition<WebElement> listNthElementHasText(final List<WebElement> elements, final int index, final String expectedText) {
         return elementExceptionsCatcher(new ExpectedCondition<WebElement>() {
-            private List<WebElement> elements;
             private List<String> texts;
 
             public WebElement apply(WebDriver driver) {
-                elements = driver.findElements(elementsLocator);
                 texts = Helpers.getTexts(elements);
                 try {
                     if (texts.get(index).contains(expectedText)) {
