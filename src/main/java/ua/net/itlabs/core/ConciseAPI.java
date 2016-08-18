@@ -8,37 +8,44 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
-public abstract class ConciseAPI {
+public class ConciseAPI {
+    private static WebDriver driver;
 
-    public abstract WebDriver getWebDriver();
+    public static WebDriver getWebDriver() {
+        return driver;
+    }
 
-    public void open(String url) {
+    public static void setWebDriver(WebDriver driver) {
+        ConciseAPI.driver = driver;
+    }
+
+    public static void open(String url) {
         getWebDriver().get(url);
     }
 
-    public WebElement $(By locator){
+    public static WebElement $(By locator){
         return assertThat(visibilityOfElementLocated(locator));
     }
 
-    public WebElement $(String cssSelector){
+    public static WebElement $(String cssSelector){
         return $(By.cssSelector(cssSelector));
     }
 
-    public By byText(String elementText) {
+    public static By byText(String elementText) {
         return By.xpath("//*[text()='" + elementText + "']");
     }
 
-    public By byTitle(String title) {
+    public static By byTitle(String title) {
         return By.xpath("//*[starts-with(@title,'" + title + "')]");
     }
 
 //        super(".//*/text()[normalize-space(.) = " + Quotes.escape(elementText) + "]/parent::*");
 
-    public <V> V assertThat(Function<? super WebDriver, V> condition) {
+    public static <V> V assertThat(Function<? super WebDriver, V> condition) {
         return assertThat(condition, Configuration.timeout);
     }
 
-    public <V> V assertThat(Function<? super WebDriver, V> condition, int timeout) {
+    public static <V> V assertThat(Function<? super WebDriver, V> condition, int timeout) {
         return (new WebDriverWait(getWebDriver(), timeout)).until(condition);
     }
 

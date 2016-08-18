@@ -2,35 +2,31 @@ package ua.net.itlabs.gmailtest.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import ua.net.itlabs.core.BasePage;
+import ua.net.itlabs.core.ConciseAPI;
 
 import static ua.net.itlabs.core.CustomConditions.listNthElementHasText;
 import static ua.net.itlabs.core.CustomConditions.texts;
 
-public class MailsPage extends BasePage {
-    public MailsPage(WebDriver driver) {
-        super(driver);
-    }
+public class Mails extends ConciseAPI {
 
-    public void send(String to, String subject) {
+    public static void send(String to, String subject) {
         $(byText("COMPOSE")).click();
         $(By.name("to")).sendKeys(to);
         $(By.name("subjectbox")).sendKeys(subject);
         $(byText("Send")).click();
     }
 
-    public  void assertMail(int index, String text) {
+    public  static void assertMail(int index, String text) {
         assertThat(listNthElementHasText(emails, index, text));
     }
 
-    public void assertMails(String... emailTexts) {
+    public static void assertMails(String... emailTexts) {
         assertThat(texts(emails, emailTexts));
     }
 
-    public void searchBySubject(String text) {
+    public static void searchBySubject(String text) {
         $(By.name("q")).sendKeys("subject: " + text + Keys.ENTER);
     }
 
-    public By emails = By.cssSelector("[role='main'] .zA");
+    public static By emails = By.cssSelector("[role='main'] .zA");
 }

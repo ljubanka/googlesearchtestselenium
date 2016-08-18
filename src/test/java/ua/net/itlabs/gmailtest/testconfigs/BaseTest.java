@@ -8,20 +8,16 @@ import ua.net.itlabs.core.ConciseAPI;
 import ua.net.itlabs.core.Configuration;
 
 public class BaseTest extends ConciseAPI {
-    static WebDriver driver;
 
     @BeforeClass
     public static void setup() {
-        driver = new FirefoxDriver();
+        WebDriver driver = new FirefoxDriver();
+        setWebDriver(driver);
     }
 
     @AfterClass
     public static void finish() {
-        driver.quit();
+        getWebDriver().quit();
     }
 
-    @Override
-    public WebDriver getWebDriver() {
-        return driver;
-    }
 }

@@ -2,38 +2,35 @@ package ua.net.itlabs.gmailtest;
 
 import org.junit.Test;
 import ua.net.itlabs.core.Configuration;
-import ua.net.itlabs.gmailtest.pages.GmailPage;
-import ua.net.itlabs.gmailtest.pages.MailsPage;
-import ua.net.itlabs.gmailtest.pages.MenuPage;
 import ua.net.itlabs.gmailtest.testconfigs.BaseTest;
 
 import static ua.net.itlabs.core.Helpers.getUniqueText;
+import static ua.net.itlabs.gmailtest.pages.Gmail.*;
+import static ua.net.itlabs.gmailtest.pages.Mails.*;
+import static ua.net.itlabs.gmailtest.pages.Menu.*;
 import static ua.net.itlabs.gmailtest.testdata.LoginData.email;
 import static ua.net.itlabs.gmailtest.testdata.LoginData.password;
 
 public class GMailTest extends BaseTest {
-    GmailPage gmail = new GmailPage(getWebDriver());
-    MailsPage mails = new MailsPage(getWebDriver());
-    MenuPage menu = new MenuPage(getWebDriver());
 
     @Test
     public void testSendAndSearchEmail()  {
         Configuration.timeout = 16;
-        gmail.vizit();
+        vizit();
 
-        gmail.logIn(email, password);
+        logIn(email, password);
         String subject  = getUniqueText("Autotest email ");
 
-        mails.send(email, subject);
+        send(email, subject);
 
-        menu.refresh();
+        refresh();
 
-        menu.goToSent();
-        mails.assertMail(0, subject);
+        goToSent();
+        assertMail(0, subject);
 
-        menu.goToInbox();
-        mails.searchBySubject(subject);
-        mails.assertMails(subject);
+        goToInbox();
+        searchBySubject(subject);
+        assertMails(subject);
     }
 
 }
