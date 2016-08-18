@@ -1,6 +1,7 @@
 package ua.net.itlabs.gmailtest;
 
 import org.junit.Test;
+import ua.net.itlabs.core.Configuration;
 import ua.net.itlabs.gmailtest.pages.GmailPage;
 import ua.net.itlabs.gmailtest.pages.MailsPage;
 import ua.net.itlabs.gmailtest.pages.MenuPage;
@@ -17,6 +18,7 @@ public class GMailTest extends BaseTest {
 
     @Test
     public void testSendAndSearchEmail()  {
+        Configuration.timeout = 16;
         gmail.vizit();
 
         gmail.logIn(email, password);

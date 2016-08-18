@@ -13,10 +13,10 @@ public class MenuPage extends BasePage {
     }
 
     public void goToSent() {
-        $(byText("Sent Mail")).click();
+        $(byTitle("Sent Mail")).click();
     }
 
     public void goToInbox() {
-        $(byText("Inbox")).click();
+        $(byTitle("Inbox")).click();
     }
 }

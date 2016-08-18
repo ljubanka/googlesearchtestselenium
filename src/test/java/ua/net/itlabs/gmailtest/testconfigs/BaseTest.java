@@ -13,7 +13,6 @@ public class BaseTest extends ConciseAPI {
     @BeforeClass
     public static void setup() {
         driver = new FirefoxDriver();
-        Configuration.timeout = 16;
     }
 
     @AfterClass

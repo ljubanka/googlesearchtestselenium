@@ -28,6 +28,10 @@ public abstract class ConciseAPI {
         return By.xpath("//*[text()='" + elementText + "']");
     }
 
+    public By byTitle(String title) {
+        return By.xpath("//*[starts-with(@title,'" + title + "')]");
+    }
+
 //        super(".//*/text()[normalize-space(.) = " + Quotes.escape(elementText) + "]/parent::*");
 
     public <V> V assertThat(Function<? super WebDriver, V> condition) {
