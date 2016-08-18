@@ -8,9 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class BasePage extends ConciseAPI {
-
-    @FindBy(css = "[role='main'] .zA")
-    public List<WebElement> emails;
+    private WebDriver driver;
 
     @Override
     public WebDriver getWebDriver() {
@@ -18,9 +16,9 @@ public class BasePage extends ConciseAPI {
     }
 
     public BasePage(WebDriver driver) {
-        this.driver = driver;//is this line correct?needed?
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    private WebDriver driver;
+
 }

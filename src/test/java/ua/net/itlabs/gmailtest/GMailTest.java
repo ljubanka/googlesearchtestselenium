@@ -29,11 +29,11 @@ public class GMailTest extends BaseTest {
         menu.refresh();
 
         menu.goToSent();
-        mails.assertMail(gmail, 0, subject);
+        mails.assertMail(0, subject);
 
         menu.goToInbox();
         mails.searchBySubject(subject);
-        mails.assertMails(gmail, subject);
+        mails.assertMails(subject);
     }
 
 }

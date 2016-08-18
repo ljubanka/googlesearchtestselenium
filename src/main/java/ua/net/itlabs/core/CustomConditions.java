@@ -6,8 +6,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import java.util.List;
 
-import static org.apache.commons.lang3.StringUtils.join;
-
 public class CustomConditions {
 
     public static ExpectedCondition<Boolean> sizeOf(final By elementsLocator, final int expectedSize){
