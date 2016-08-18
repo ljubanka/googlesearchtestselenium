@@ -1,6 +1,7 @@
 package ua.net.itlabs.core;
 
 import com.google.common.base.Function;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import java.util.List;
@@ -61,7 +62,7 @@ public class CustomConditions {
             }
 
             public String toString() {
-                return String.format("texts in list to be %s \n while actual texts are %s \n" , join(expectedTexts, ", "), join(texts, ", "));
+                return String.format("texts in list to be %s \n while actual texts are %s \n" , StringUtils.join(expectedTexts, ", "), StringUtils.join(texts, ", "));
             }
         });
     }
@@ -72,18 +73,14 @@ public class CustomConditions {
 
             public WebElement apply(WebDriver driver) {
                 texts = Helpers.getTexts(elements);
-                try {
-                    if (texts.get(index).contains(expectedText)) {
-                        return elements.get(index);
-                    }
-                }
-                catch (IndexOutOfBoundsException e) {
+                if (texts.get(index).contains(expectedText)) {
+                    return elements.get(index);
                 }
                 return null;
             }
 
             public String toString() {
-                return String.format("Text in %s-th element in list %s \n to be %s\n" , index, join(texts, ", "), expectedText);
+                return String.format("Text in %s-th element in list %s \n to be %s\n" , index, StringUtils.join(texts, ", "), expectedText);
             }
         });
     }
@@ -93,9 +90,7 @@ public class CustomConditions {
             public V apply(WebDriver input) {
                 try {
                     return condition.apply(input);
-                } catch (StaleElementReferenceException e) {
-                    return null;
-                } catch (ElementNotVisibleException e) {
+                } catch (StaleElementReferenceException | ElementNotVisibleException | IndexOutOfBoundsException e) {
                     return null;
                 }
             }
