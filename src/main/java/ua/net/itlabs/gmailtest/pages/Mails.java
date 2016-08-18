@@ -2,12 +2,12 @@ package ua.net.itlabs.gmailtest.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import ua.net.itlabs.core.ConciseAPI;
 
+import static ua.net.itlabs.core.ConciseAPI.*;
 import static ua.net.itlabs.core.CustomConditions.listNthElementHasText;
 import static ua.net.itlabs.core.CustomConditions.texts;
 
-public class Mails extends ConciseAPI {
+public class Mails {
 
     public static void send(String to, String subject) {
         $(byText("COMPOSE")).click();

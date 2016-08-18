@@ -1,8 +1,8 @@
 package ua.net.itlabs.gmailtest.pages;
 
-import ua.net.itlabs.core.ConciseAPI;
+import static ua.net.itlabs.core.ConciseAPI.*;
 
-public class Menu extends ConciseAPI {
+public class Menu {
 
     public static void refresh() {
         $(".nu").click();
