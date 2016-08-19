@@ -1,5 +1,6 @@
 package ua.net.itlabs.gmailtest;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import ua.net.itlabs.core.Configuration;
 import ua.net.itlabs.gmailtest.testconfigs.BaseTest;
@@ -13,9 +14,13 @@ import static ua.net.itlabs.gmailtest.testdata.LoginData.password;
 
 public class GMailTest extends BaseTest {
 
+    @BeforeClass
+    public static void setup() {
+        Configuration.timeout = 16;
+    }
+
     @Test
     public void testSendAndSearchEmail()  {
-        Configuration.timeout = 16;
         vizit();
 
         logIn(email, password);
