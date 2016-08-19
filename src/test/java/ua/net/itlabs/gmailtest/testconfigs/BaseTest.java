@@ -2,17 +2,16 @@ package ua.net.itlabs.gmailtest.testconfigs;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ua.net.itlabs.core.ConciseAPI;
-import ua.net.itlabs.core.Configuration;
 
-public class BaseTest extends ConciseAPI {
+import static ua.net.itlabs.core.ConciseAPI.getWebDriver;
+import static ua.net.itlabs.core.ConciseAPI.setWebDriver;
+
+public class BaseTest {
 
     @BeforeClass
     public static void setup() {
-        WebDriver driver = new FirefoxDriver();
-        setWebDriver(driver);
+        setWebDriver(new FirefoxDriver());
     }
 
     @AfterClass
