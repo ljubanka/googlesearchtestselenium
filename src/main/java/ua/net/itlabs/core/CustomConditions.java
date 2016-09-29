@@ -92,7 +92,15 @@ public class CustomConditions {
             public V apply(WebDriver input) {
                 try {
                     return condition.apply(input);
-                } catch (StaleElementReferenceException | ElementNotVisibleException | IndexOutOfBoundsException e) {
+                } catch (StaleElementReferenceException e) {
+                    return null;
+
+                }
+                catch (ElementNotVisibleException e) {
+                    return null;
+                }
+
+                catch (IndexOutOfBoundsException e){// {| ElementNotVisibleException | IndexOutOfBoundsException e) {
                     return null;
                 }
             }
